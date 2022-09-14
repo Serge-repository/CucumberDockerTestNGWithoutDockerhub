@@ -1,0 +1,34 @@
+version: "3"
+services:
+  hub: 
+    image: selenium/hub
+    ports: 
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome
+    shm_size: '2gb'
+    depends_on:
+      - hub
+    environment: 
+      - SE_EVENT_BUS_HOST=hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+## Volume mapping for file DOWNLOADS
+    volumes:
+      - .\target\downloads:/home/seluser/Downloads
+### Adding OUR DOCKER IMAGE RUN
+  cucumber-testng:
+    image: serge11elzar/cucumber_docker_testng
+    depends_on:
+      - chrome
+    environment:
+      - browser=chrome
+      - HUB_HOST=hub
+      - CUCUMBER_OPTIONS=classpath:features
+#      TO RUN A SUITE
+#      - TAGS=@Smoke
+    volumes:
+      - .\target\allure-results:/usr/share/cucumber_docker_testng/target/allure-results
+      - .\target\cucumber-reports:/usr/share/cucumber_docker_testng/target/cucumber-reports
