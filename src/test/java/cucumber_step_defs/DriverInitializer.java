@@ -30,7 +30,7 @@ public class DriverInitializer {
 
     @Before
     public void beforeMethod() throws MalformedURLException {
-        String host = RemoteLocalManager.getRemoteLocalManager().hostAddress;
+        String host = RemoteLocalManager.getRemoteLocalManager().getHostAddress();
         startDriver(browser, host);
     }
 
