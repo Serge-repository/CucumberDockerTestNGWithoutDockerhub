@@ -24,6 +24,11 @@ pipeline {
 
     stages {
 
+        stage('Selenium GRID start') {
+            steps {
+                bat "docker-compose up -d --scale ${params.browser}=${params.forks}"
+        }
+
         stage('Execute tests'){
             steps {
                 script {
@@ -35,6 +40,13 @@ pipeline {
                     }
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            bat "docker-compose stop"
+            bat "docker-compose rm --force"
         }
     }
 
