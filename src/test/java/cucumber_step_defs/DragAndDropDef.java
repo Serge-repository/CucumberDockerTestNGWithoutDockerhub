@@ -26,7 +26,7 @@ public class DragAndDropDef {
         Actions action = new Actions(driver);
         action.dragAndDrop(originBankElement, destinationBankElement).build().perform();
 
-        assertEquals("User drops BANK element", originBankElement.getText().trim(), elementText);
+        assertEquals(originBankElement.getText().trim(), elementText);
         assertTrue(driver.findElement(By.xpath("//ol[@id='bank']/li[@data-id='5']"))
                 .isDisplayed(),"Bank element is displayed in a table");
     }
@@ -39,7 +39,7 @@ public class DragAndDropDef {
         Actions action = new Actions(driver);
         action.dragAndDrop(originDebit, destinationDebit).build().perform();
 
-        assertEquals("User drops debit element", originDebit.getText().trim(), elementText);
+        assertEquals(originDebit.getText().trim(), elementText);
         assertTrue(driver.findElement(By.xpath("//ol[@id='amt7']/li[@data-id='2']"))
                 .isDisplayed());
     }
@@ -52,7 +52,7 @@ public class DragAndDropDef {
         Actions action = new Actions(driver);
         action.dragAndDrop(originSalesElement, destinationSalesElement).build().perform();
 
-        assertEquals("User drops SALES element", originSalesElement.getText().trim(), elementText);
+        assertEquals(originSalesElement.getText().trim(), elementText);
         assertTrue(driver.findElement(By.xpath("//ol[@id='loan']/li[@data-id='6']"))
                 .isDisplayed(), "Sales element is displayed in a table");
     }
@@ -65,7 +65,7 @@ public class DragAndDropDef {
         Actions action = new Actions(driver);
         action.dragAndDrop(originCreditElement, destinationCreditElement).build().perform();
 
-        assertEquals("User drops credit element", originCreditElement.getText().trim(), elementText);
+        assertEquals(originCreditElement.getText().trim(), elementText);
         assertTrue(driver.findElement(By.xpath("//ol[@id='amt8']/li[@data-id='2']"))
                 .isDisplayed(), "Credit value displayed in a table");
     }
