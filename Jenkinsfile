@@ -49,5 +49,5 @@ pipeline {
             bat "docker-compose rm --force"
         }
     }
-
+}
 }
