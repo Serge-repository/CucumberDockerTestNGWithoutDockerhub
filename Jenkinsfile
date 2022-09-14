@@ -37,7 +37,7 @@ pipeline {
                         bat "mvn clean test -Dcucumber.filter.tags=${TAGS} -Dbrowser=${params.browser} -DremoteLocal=remote -Dforks=${params.forks}"
                     }
                     if ( !FEATURE_CLASS.isEmpty() ) {
-                        bat "mvn clean test -Dcucumber.options=${FEATURE_CLASS} -Dbrowser=${params.browser} -DremoteLocal=remote -Dforks=${params.forks}"
+                        bat "mvn clean test -Dcucumber.options="${FEATURE_CLASS}" -Dbrowser=${params.browser} -DremoteLocal=remote -Dforks=${params.forks}"
                     }
                 }
             }
