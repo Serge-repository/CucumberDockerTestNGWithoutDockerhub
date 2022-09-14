@@ -17,6 +17,8 @@ pipeline {
                             src/test/resources/features/agileProject.feature,
                             src/test/resources/features/smokeNavigation.feature.
                             Leave this field empty if you want to run tags.
+
+                            DEPRECATED, NOW USE TAGS ONLY
                             ''')
         string(name: 'forks', defaultValue: '1', description: 'Number of parallel threads')
         choice(name: 'browser', choices: ['chrome', 'firefox'], description: 'Tests run on exact browser')
